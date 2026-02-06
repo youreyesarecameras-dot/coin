@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ultimate Coin Flip</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f2f5;
+        }
+        #coin {
+            width: 200px;
+            height: 200px;
+            cursor: pointer;
+            transition: transform 0.2s ease;
+            border-radius: 50%;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        }
+        #coin:active {
+            transform: scale(0.95);
+        }
+        #result {
+            margin-top: 30px;
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #333;
+            height: 1.6em;
+            text-align: center;
+        }
+        .instruction {
+            margin-bottom: 20px;
+            color: #777;
+        }
+    </style>
+</head>
+<body>
+    
+    <img id="coin" src="https://i.imgur.com/DHuzWSX.png">
+
+    <div id="result"></div>
+
+    <script>
+        const coin = document.getElementById('coin');
+        const resultDisplay = document.getElementById('result');
+
+        coin.addEventListener('click', () => {
+            // Generate a random number between 0 and 100
+            const roll = Math.random() * 100;
+            let outcome = "";
+
+            if (roll < 49.99) {
+                outcome = "Heads";
+            } else if (roll < 99.98) {
+                // 49.99 + 49.99 = 99.98
+                outcome = "Tails";
+            } else {
+                // The remaining 0.02%
+                outcome = "The coin landed on its side!";
+            }
+
+            resultDisplay.textContent = outcome;
+            
+        });
+    </script>
+</body>
+</html>
